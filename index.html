@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cohort Autopsy — Bootcamp Security Audits</title>
+    <meta name="description" content="Scan an entire coding-bootcamp cohort's repos for real, common beginner security mistakes: leaked secrets, unauthenticated admin panels, hardcoded backdoors.">
+    <meta name="theme-color" content="#f5efe6">
+    <link rel="icon" href="favicon.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="style.css">
+    <script type="module" src="js/main.js"></script>
+</head>
+<body>
+    <div class="app-shell">
+        <header class="hero">
+            <h1>🔍 Cohort Autopsy</h1>
+            <p class="tagline">Scan a whole bootcamp cohort's repos for the security
+            mistakes every beginner makes — leaked secrets, unauthenticated admin
+            panels, hardcoded backdoors. Free preview, paid full report.</p>
+        </header>
+
+        <form id="scan-form" class="scan-form">
+            <label for="repo-input">GitHub org name, or a list of <code>owner/repo</code></label>
+            <textarea id="repo-input" rows="3" placeholder="e.g. my-bootcamp-org&#10;or:&#10;owner/repo-1, owner/repo-2"></textarea>
+            <button id="btn-scan" type="submit" class="primary-btn">Scan Cohort</button>
+            <p class="rate-limit-note">Unauthenticated GitHub scans are limited to 60 requests/hour — fine for one cohort, not for repeated large scans.</p>
+        </form>
+
+        <p id="scan-status" class="scan-status" hidden></p>
+
+        <section id="results" class="results" hidden>
+            <div id="summary" class="summary"></div>
+            <h2 class="section-title">Flagged repos (free preview — first 3)</h2>
+            <div id="repo-findings" class="repo-findings"></div>
+
+            <div class="buy-box">
+                <p>The full report includes every flagged repo, every finding, and a
+                downloadable instructor summary — meant for the cohort's bootcamp or
+                instructor, not the individual student.</p>
+                <button id="btn-buy-report" class="primary-btn">Buy Full Report — $200</button>
+                <p id="buy-message" class="buy-message" hidden></p>
+            </div>
+        </section>
+
+        <footer class="hub-footer">
+            <span>Made by Emin</span>
+            <a href="https://emin-dev.github.io/Studio/">← Back to Studio</a>
+        </footer>
+    </div>
+</body>
+</html>
