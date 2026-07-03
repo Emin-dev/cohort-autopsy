@@ -33,6 +33,7 @@ el.buyBtn.addEventListener('click', () => {
 
 async function runScan(inputValue) {
     el.scanBtn.disabled = true;
+    el.scanBtn.setAttribute('aria-busy', 'true');
     el.results.hidden = true;
     el.buyMessage.hidden = true;
     el.status.hidden = false;
@@ -43,6 +44,7 @@ async function runScan(inputValue) {
         if (repos.length === 0) {
             el.status.textContent = 'Enter a GitHub org name, or a comma/newline-separated list of owner/repo.';
             el.scanBtn.disabled = false;
+            el.scanBtn.removeAttribute('aria-busy');
             return;
         }
 
@@ -62,11 +64,13 @@ async function runScan(inputValue) {
             el.status.textContent = `Something went wrong: ${err.message}`;
         }
         el.scanBtn.disabled = false;
+        el.scanBtn.removeAttribute('aria-busy');
         return;
     }
 
     el.status.hidden = true;
     el.scanBtn.disabled = false;
+    el.scanBtn.removeAttribute('aria-busy');
 }
 
 function renderResults(results) {
